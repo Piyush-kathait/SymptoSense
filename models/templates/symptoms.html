@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Symptoms-based Disease Prediction</title>
+    <script>
+        function filterSymptoms() {
+            const searchInput = document.getElementById('searchBar').value.toLowerCase();
+            const symptomDivs = document.getElementsByClassName('symptom-item');
+
+            for (let i = 0; i < symptomDivs.length; i++) {
+                const label = symptomDivs[i].innerText.toLowerCase();
+                if (label.includes(searchInput)) {
+                    symptomDivs[i].style.display = '';
+                } else {
+                    symptomDivs[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Symptoms-based Disease Prediction</h1>
+    <form action="/symptoms" method="POST">
+        <h2>Select Symptoms:</h2>
+        <input type="text" id="searchBar" onkeyup="filterSymptoms()" placeholder="Search for symptoms...">
+        <br><br>
+        {% for symptom in symptoms_list %}
+        <div class="symptom-item">
+            <input type="checkbox" class="symptom-checkbox" name="symptoms" value="{{ symptom }}"> {{ symptom }}<br>
+        </div>
+        {% endfor %}
+        <button type="submit">Predict Disease</button>
+    </form>
+    {% if prediction %}
+    <h2>Predicted Disease: {{ prediction }}</h2>
+    {% endif %}
+</body>
+
+</html>

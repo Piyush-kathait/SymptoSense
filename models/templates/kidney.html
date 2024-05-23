@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kidney Disease Prediction</title>
+</head>
+
+<body>
+    <h1>Kidney Disease Prediction</h1>
+    <form action="/kidney" method="POST">
+        {% for feature in kidney_input_features %}
+        <label for="{{ feature }}">{{ feature }}:</label>
+        <input type="text" name="{{ feature }}" id="{{ feature }}"><br>
+        {% endfor %}
+        <button type="submit">Predict Kidney Disease</button>
+    </form>
+    {% if prediction %}
+    <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+</body>
+
+</html>

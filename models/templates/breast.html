@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Prediction</title>
+</head>
+
+<body>
+    <h1>Breast Cancer Prediction</h1>
+    <form action="/breast_cancer_prediction" method="post" enctype="multipart/form-data">
+        <label for="file">Upload an image:</label><br>
+        <input type="file" id="file" name="file"><br>
+        <input type="submit" value="Predict Breast Cancer">
+    </form>
+    <div id="prediction_result"></div>
+</body>
+
+</html>
